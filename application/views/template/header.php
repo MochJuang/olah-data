@@ -10,6 +10,7 @@
 			<link rel="stylesheet" href="<?php echo $value ?>">
 		<?php endforeach ?>
 	<?php endif ?>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 	<body>
 		<!-- NAVBAR -->
 		   <nav id="main-navbar" class="navbar navbar-expand-md navbar-dark bg-dark py-0">
