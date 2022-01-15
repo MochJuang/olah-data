@@ -1,68 +1,21 @@
 <div class="container my-3">
 	<form action="<?php echo base_url('home/import_data') ?>" id="form-input" method="post">
-		<div class="input-group">
-			<input type="file" name="file" id="form-import" class="form-control">
-			<div class="input-group-addon">
-				<button type="submit" id="import-button" class="btn btn-success disabled">
-					<i class="fa fa-check"></i>
+		<div class="row">
+			<div class="col-12 col-md-6 mt-4 mt-md-0">
+				<input type="text" name="name" placeholder="Nama Data" class="form-control form-control-lg">		
+			</div>
+			<div class="col-12 col-md-6 mt-4 mt-md-0">
+				
+				<input type="file" name="file" id="form-import" class="form-control form-control-lg">
+			</div>
+			<div class="col-12 mt-4 ">
+				<button type="submit" id="import-button" style="display: block;" class="btn btn-success btn-lg w-100 disabled">
+					Upload File
 				</button>
 			</div>
 		</div>
 	</form>
-
-	<div class="row mt-5">
-		<div class="col table-responsive">
-			<table class="table table-sm table-striped" id="table-data">
-				<thead>
-					<tr>
-						<th>Periode	</th>
-						<th>Region	</th>
-						<th>Main Branch	</th>
-						<th>Branch	</th>
-						<th>Currency	</th>
-						<th>Nama AO	</th>
-						<th>LN Type	</th>
-						<th>CIFNO	</th>
-						<th>Nomor rekening	</th>
-						<th>simpedes	</th>
-						<th>tabunganku	</th>
-						<th>Nama Debitur	</th>
-						<th>Alamat Identitas	</th>
-						<th>Kode Pos	Alamat Kantor	</th>
-						<th>Kode Pos	</th>
-						<th>Plafond	</th>
-						<th>Next Pmt Date	</th>
-						<th>tgl	</th>
-						<th>bln	</th>
-						<th>thn	</th>
-						<th>Next Int Pmt Date	</th>
-						<th>Rate	</th>
-						<th>Tgl Menunggak	</th>
-						<th>Tgl Realisasi	</th>
-						<th>Tgl Jatuh tempo	</th>
-						<th>Jangka Waktu	</th>
-						<th>Flag Restruk	</th>
-						<th>Kolektibilitas Lancar	</th>
-						<th>Kolektibilitas DPK	</th>
-						<th>Kolektibilitas Kurang Lancar	</th>
-						<th>Kolektibilitas Diragukan	</th>
-						<th>Kolektibilitas Macet	</th>
-						<th>Baki debet	</th>
-						<th>Tunggakan Pokok	</th>
-						<th>Tunggakan Bunga	</th>
-						<th>Tunggakan Pinalty	</th>
-						<th>saldo 1	</th>
-						<th>saldo 2	</th>
-						<th>tabunganku	</th>
-						<th>=/- saldo 1 	</th>
-						<th>=/- saldo 2	</th>
-						<th>+/- tabunganku	</th>
-						<th>PN   PENGELOLA	</th>
-						<th>NAMA  PENGELOLA </th>
-					</tr>
-				</thead>
-			</table>
-		</div>
+	<div id="hasil" class="row mt-3">
 	</div>
 </div>
 
@@ -70,7 +23,6 @@
 	// alert('test')
 	$(document).ready(function() {
 		//alert('test')
-		$('#table-data').DataTable();
 
 		$(document).on('change', '#form-import', function(event) {
 			event.preventDefault();
@@ -91,7 +43,7 @@
 
 	$(document).on('submit', '#form-input', function(event) {
 		event.preventDefault();
-		const btnImport = $('#import-botton')
+		const btnImport = $('#import-button')
 		if(btnImport.hasClass('disabled')){
 			return ;
 		}
@@ -116,9 +68,24 @@
 			success: function(result) {
 				btnImport.removeClass('disabled');
 				btnImport.html(`
-					<i class="fa fa-check"></i>
+					Upload File
 				`)
-				console.log(result)
+				if(result.status == 200){
+					$('#hasil').html(`
+						<div class="alert alert-success text-center" role="alert">
+							<div class="row">
+								<div class="col">
+									<i class="fa fa-check fa-6x"></i>					
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+								  <h3>Success Importing Data </h3>
+								</div>
+							</div>
+						</div>				
+					`)
+				}
 			}
 		});
 	});

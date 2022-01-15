@@ -7,12 +7,16 @@ function dd($v){
 	echo "</pre>";
 }
 
-function prosesDataSimpanan($data)
+function prosesDataSimpanan($data, $data_id)
 {
 	$rows = [];
 
 	foreach ($data as $key => $r) {
+		if ($key == 0) {
+			continue;
+		}
 		$rows[] = [
+			'data_id' => $data_id,
 			'periode' => $r['A'],
 			'uker_code' => $r['B'],
 			'curr_code' => $r['C'],
@@ -22,58 +26,62 @@ function prosesDataSimpanan($data)
 			'short_name' => $r['G'],
 			'officer_name' => $r['H'],
 			'dlt' => $r['I'],
-			'Open_DT' => $r['J'],
+			'open_dt' => $r['J'],
 			'balance' => $r['K'],
 			'available_balance' => $r['L'],
 			'int_credit' => $r['M'],
 			'accrued_int' => $r['N'],
 			'average_balance' => $r['O'],
 			'prod_code' => $r['P'],
-			'PN_PENGELOLA' => $r['Q'],
-			'NAMA_PENGELOLA' => $r['R']
+			'pn_pengelola' => $r['Q'],
+			'nama_pengelola' => $r['R']
 		];
 	}
 	return $rows;
 }
 
-function prosesDataPinjaman($data)
+function prosesDataPinjaman($data, $data_id)
 {
 	$rows = [];
 	foreach ($data as $key => $r) {
+		if ($key == 0) {
+			continue;
+		}
 		$rows[] = [
-			'Periode' => $r['A'],	
-			'Region' => $r['B'],	
-			'Main_Branch' => $r['C'], 	
-			'Branch' => $r['D'],	
-			'Currency' => $r['E'],	
-			'Nama_AO' => $r['F'],	
-			'LN_Type' => $r['G'],	
-			'Nomor_rekening' => $r['H'],	
-			'Nama_Debitur' => $r['I'],	
-			'Alamat_Identitas' => $r['J'],	
-			'Kode_Pos' => $r['K'],	
-			'Alamat_Kantor' => $r['L'],	
-			'Kode_Pos' => $r['M'],	
-			'Plafond' => $r['N'],	
-			'Next_Pmt_Date' => $r['O'],	
-			'Next_Int_Pmt_Date' => $r['P'],	
-			'Rate' => $r['Q'],	
-			'Tgl_Menunggak' => $r['R'],	
-			'Tgl_Realisasi' => $r['S'],	
-			'Tgl_Jatuh_tempo' => $r['T'],	
-			'Jangka_Waktu' => $r['U'],	
-			'Flag_Restruk' => $r['V'],	
-			'CIFNO' => $r['W'],	
-			'Kolektibilitas_Lancar' => $r['X'],	
-			'Kolektibilitas_DPK' => $r['Y'],	
-			'Kolektibilitas_Kurang_Lancar' => $r['Z'],	
-			'Kolektibilitas_Diragukan' => $r['AA'],	
-			'Kolektibilitas_Macet' => $r['AB'],	
-			'Tunggakan_Pokok' => $r['AC'],	
-			'Tunggakan_Bunga' => $r['AD'],	
-			'Tunggakan_Pinalty' => $r['AF'],	
-			'PN_PENGELOLA' => $r['AG'],	
-			'NAMA_PENGELOLA' => $r['AH']
+			'data_id' => $data_id,
+			'periode' => $r['A'],	
+			'region' => $r['B'],	
+			'main_Branch' => $r['C'], 	
+			'branch' => $r['D'],	
+			'currency' => $r['E'],	
+			'nama_ao' => $r['F'],	
+			'ln_type' => $r['G'],	
+			'nomor_rekening' => $r['H'],	
+			'nama_debitur' => $r['I'],	
+			'alamat_identitas' => $r['J'],	
+			'kode_pos1' => $r['K'],	
+			'alamat_kantor' => $r['L'],	
+			'kode_pos2' => $r['M'],	
+			'plafond' => $r['N'],	
+			'next_pmt_date' => $r['O'],	
+			'next_int_pmt_date' => $r['P'],	
+			'rate' => $r['Q'],	
+			'tgl_Menunggak' => $r['R'],	
+			'tgl_realisasi' => $r['S'],	
+			'tgl_jatuh_tempo' => $r['T'],	
+			'jangka_Waktu' => $r['U'],	
+			'flag_restruk' => $r['V'],	
+			'cifno' => $r['W'],	
+			'kolektibilitas_lancar' => $r['X'],	
+			'kolektibilitas_dpk' => $r['Y'],	
+			'kolektibilitas_kurang_lancar' => $r['Z'],	
+			'kolektibilitas_diragukan' => $r['AA'],	
+			'kolektibilitas_macet' => $r['AB'],	
+			'tunggakan_pokok' => $r['AC'],	
+			'tunggakan_bunga' => $r['AD'],	
+			'tunggakan_pinalty' => $r['AF'],	
+			'pn_pengelola' => $r['AG'],	
+			'nama_pengelola' => $r['AH']
 		];
 	}
 	return $rows;

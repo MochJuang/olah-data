@@ -12,6 +12,7 @@
 	<?php endif ?>
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 	<body>
+		<input type="hidden" id="base_url" value="<?php echo base_url() ?>">
 		<!-- NAVBAR -->
 		   <nav id="main-navbar" class="navbar navbar-expand-md navbar-dark bg-dark py-0">
 		     <div class="container">
@@ -29,7 +30,10 @@
 		       <div class="collapse navbar-collapse" id="navbarNav">
 		         <ul class="navbar-nav ml-auto">
 		           <li class="nav-item">
-		             <a class="nav-link p-4" href="<?php echo base_url() ?>">Home</a>
+		             <a class="nav-link p-4" href="<?php echo base_url() ?>">Upload</a>
+		           </li>
+		           <li class="nav-item">
+		             <a class="nav-link p-4" href="<?php echo base_url() ?>/home/pengolahan">Data Pengolahan</a>
 		           </li>
 		           <<!-- li class="nav-item">
 		             <a class="nav-link p-4" href="blog.html">Blog</a>
